@@ -99,7 +99,7 @@ def check(buffer):
         # TODO: use warnings filters instead of ignoring stderr
         old_stderr, sys.stderr = sys.stderr, blackhole()
         try:
-            compile(contents, filename or 'unknown', 'exec', ast.PyCF_ONLY_AST)
+            tree = compile(contents, filename or 'unknown', 'exec', ast.PyCF_ONLY_AST)
         finally:
             sys.stderr = old_stderr
     except:
